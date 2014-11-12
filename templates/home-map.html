@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12">
+
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+
+        <ui-gmap-markers models="map.markers" coords="'self'" click="'onClick'" icon="'style/fonts/bike_downhill.png'">
+
+          <ui-gmap-windows show="'showWindow'" class="peno">
+            <div>
+              <p ng-non-bindable>{{ name }}</p>
+              <p ng-non-bindable>Lediga ställ: {{ avalStands }}</p>
+              <p ng-non-bindable>Lediga cyklar: {{ avalBikes }}</p>
+            </div>
+          </ui-gmap-windows>
+
+        </ui-gmap-markers>
+
+      </ui-gmap-google-map>
+
+  </div>
+</div>
