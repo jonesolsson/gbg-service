@@ -23,6 +23,11 @@ angular.module('states', [])
   .state('home.near', {
     url: "/near",
     templateUrl: "templates/home-nearest.html"
+  })
+
+  .state('home.favourites', {
+    url: '/favourites',
+    templateUrl: 'templates/home-favourites.html'
   });
 
 	$urlRouterProvider.otherwise("/home");

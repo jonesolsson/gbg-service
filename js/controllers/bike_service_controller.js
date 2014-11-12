@@ -1,6 +1,13 @@
 angular.module('bikeCtrl', [])
 
-  .controller('bikeServiceController', ['$rootScope', '$scope', '$http', 'Bike', '$q', 'getCoords', 'GoogleMapApi'.ns(), function($rootScope, $scope, $http, Bike, $q, getCoords, GoogleMapApi) {
+  .controller('bikeServiceController', ['$rootScope', '$scope', '$http', 'Bike', '$q', 'getCoords', 'GoogleMapApi'.ns(), 'Storage',
+   function($rootScope, $scope, $http, Bike, $q, getCoords, GoogleMapApi, Storage) {
+
+    //Set user in localStorage / User info
+    Storage.setUser();
+    $scope.user = {
+      userId: Storage.getUserId()
+    };
 
     //Object with coords data
     $scope.coords = {
@@ -15,10 +22,14 @@ angular.module('bikeCtrl', [])
 
     //Save fav from nearest stations
     $scope.saveStation = function(StationId) {
-      Bike.postFav(StationId).then(function(data) {
+      Bike.postFav(StationId, $scope.user.userId).then(function(data) {
         console.log(data);
       });
     };
+
+    Bike.getFav($scope.user.userId).then(function(data) {
+      console.log(data);
+    });
 
     //GOOGLE MAP
     Bike.getBikes($scope.coords.currentLat, $scope.coords.currentLong, 20000).then(function(data) {

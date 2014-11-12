@@ -5,6 +5,7 @@
     "grunt": "~0.4.5",
     "grunt-contrib-cssmin": "0.6.0",
     "grunt-contrib-less": "~0.11.4",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "angular-local-storage": "~0.1.5",
   }
 }

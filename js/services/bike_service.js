@@ -1,5 +1,35 @@
 angular.module('bikeService', [])
 
+.provider('Storage', function() {
+
+  this.$get = ['$http', 'localStorageService', 'uuid2', function($http, localStorageService, uuid2){
+
+      return({
+        setUser: setUser,
+        getUserId: getUserId
+      });
+
+      function setUserId() {
+        var userId = uuid2.newuuid();
+        return userId;
+      }
+
+      function setUser() {
+
+        if(localStorageService.get('user'))
+          console.log('exists');
+        else
+          localStorageService.set( 'user',  setUserId() );
+      }
+
+      function getUserId() {
+        return localStorageService.get('user');
+      }
+
+  }];
+
+})
+
 .provider('Bike', function() {
 
   this.$get = ['$q', '$http', function($q, $http) {
@@ -8,7 +38,8 @@ angular.module('bikeService', [])
       return({
         getBikes: getBikes,
         getCoords: getCoordinates,
-        postFav: postFavourite
+        postFav: postFavourite,
+        getFav: getFavourites
       });
 
       function getCoordinates() {
@@ -42,14 +73,33 @@ angular.module('bikeService', [])
 
       }
 
-      function postFavourite(statId) {
+      //Favourite stations
+      function postFavourite(statId, userId) {
 
         var deferred = $q.defer();
 
         $http({
           method: 'POST',
           url: 'server/post_favourite.php',
-          data: { stationsId: statId }
+          data: { stationsId: statId, userId: userId }
+        }).success(function(data) {
+          deferred.resolve(data);
+        }).error(function(msg, code) {
+          deferred.reject(msg + ' ' + code);
+        });
+
+        return deferred.promise;
+
+      }
+
+      function getFavourites(userId) {
+
+        var deferred = $q.defer();
+
+        $http({
+          method: 'POST',
+          url: 'server/get_favourites.php',
+          data: { userId: userId }
         }).success(function(data) {
           deferred.resolve(data);
         }).error(function(msg, code) {
