@@ -15,8 +15,9 @@ angular.module('bikeCtrl', [])
       currentLong: getCoords.coords.longitude
     };
 
-    Bike.getBikes( /*$scope.coords.currentLat, $scope.coords.currentLong*/ 57.710570, 11.987056, 500).then(function(data) {
+    Bike.getBikes( /*$scope.coords.currentLat, $scope.coords.currentLong,*/ 57.710570, 11.987056, 500).then(function(data) {
       $scope.stations = data;
+      //console.log(data);
     });
 
     //Get data from API to favouriteStations
@@ -38,7 +39,7 @@ angular.module('bikeCtrl', [])
       });
 
     };
-    
+
     //Delete favourite station
     $scope.deleteStation = function(stationsId) {
 
@@ -57,7 +58,35 @@ angular.module('bikeCtrl', [])
 
     };
 
-    //GOOGLE MAP
+
+  GoogleMapApi.then(function(maps) {
+
+    var directionsService = new maps.DirectionsService();
+    var directionsDisplay = new maps.DirectionsRenderer();
+
+    var req = {
+      origin:  new maps.LatLng($scope.coords.currentLat, $scope.coords.currentLong),
+      destination: new maps.LatLng(57.710570, 11.987056),
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    directionsService.route(req, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      console.log('rövpiss');
+    }
+  });
+
+  });
+
+
+
+
+
+
+
+    //GOOGLE MAP for "maps page"
     Bike.getBikes($scope.coords.currentLat, $scope.coords.currentLong, 20000).then(function(data) {
       $scope.map = {
         center: { latitude: $scope.coords.currentLat, longitude: $scope.coords.currentLong },
@@ -85,9 +114,19 @@ angular.module('bikeCtrl', [])
           name: val.Name,
           avalStands: val.AvailableBikeStands,
           avalBikes: val.AvailableBikes,
+          icon: 'style/bike_downhill.png'
         });
 
       });
+
+      //Current position marker
+      $scope.marker = {
+        id: 999,
+        coords: {
+          latitude: $scope.coords.currentLat,
+          longitude: $scope.coords.currentLong
+        }
+      };
 
     });
 

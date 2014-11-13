@@ -3,7 +3,10 @@
 
       <ui-gmap-google-map center='map.center' zoom='map.zoom'>
 
-        <ui-gmap-markers models="map.markers" coords="'self'" click="'onClick'" icon="'style/fonts/bike_downhill.png'">
+        <ui-gmap-marker coords="marker.coords" idkey="marker.id" options="marker.options">
+        </ui-gmap-marker>
+
+        <ui-gmap-markers models="map.markers" coords="'self'" click="'onClick'" icon="'icon'">
 
           <ui-gmap-windows show="'showWindow'" class="peno">
             <div>

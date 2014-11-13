@@ -12,7 +12,6 @@ angular.module('gbgService', [
  .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
       GoogleMapApi.configure({
           key: 'AIzaSyD2h2c1XbwK4vA_olDBKr8rLGozjsYWfn4',
-          v: '3.17',
-          //libraries: 'weather,geometry,visualization'
+          v: '3.17'
       });
   }]);

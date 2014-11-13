@@ -5,9 +5,18 @@
         <h3>{{ station.Name }}</h3>
         <p available-bikes>Lediga cyklar: {{ AvailableBikes }}</p>
         <p>Lediga ställ: {{ station.AvailableBikeStands }}</p>
-        <a href="https://www.google.com/maps/dir/{{myLat}}+{{myLong}}/{{station.Lat}},{{station.Long}}">Hitta hit</a>
+        <p>Avstånd: {{ station.Distance }}m</p>
+        <a href="https://www.google.com/maps/dir/{{coords.currentLat}}+{{coords.currentLong}}/{{station.Lat}},{{station.Long}}">Hitta hit</a>
         <button ng-click="saveStation(station.StationId)">Spara Favvo</button>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <ui-gmap-google-map center='mapp.center' zoom='mapp.zoom'>
+
+    </ui-gmap-google-map>
   </div>
 </div>

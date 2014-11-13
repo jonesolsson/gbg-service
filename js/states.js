@@ -4,6 +4,14 @@ angular.module('states', [])
 
   $stateProvider
 
+  .state('index', {
+    url: '/',
+    template: '<h1>LOADING</h1>',
+    controller: function($location) {
+      $location.path('/home');
+    }
+  })
+
   .state('home', {
     url: "/home",
     templateUrl: 'templates/home.html',
@@ -30,6 +38,6 @@ angular.module('states', [])
     templateUrl: 'templates/home-favourites.html'
   });
 
-	$urlRouterProvider.otherwise("/home");
+	$urlRouterProvider.otherwise("/");
 
 });
