@@ -4,6 +4,7 @@ angular.module('bikeService', [])
 
   this.$get = ['$http', 'localStorageService', 'uuid2', function($http, localStorageService, uuid2){
 
+      //Public use
       return({
         setUser: setUser,
         getUserId: getUserId
@@ -34,12 +35,13 @@ angular.module('bikeService', [])
 
   this.$get = ['$q', '$http', function($q, $http) {
 
-    	//Public functions
+    	//Public use
       return({
         getBikes: getBikes,
         getCoords: getCoordinates,
         postFav: postFavourite,
-        getFav: getFavourites
+        getFav: getFavourites,
+        deleteFav: deleteFavourites
       });
 
       function getCoordinates() {
@@ -100,6 +102,24 @@ angular.module('bikeService', [])
           method: 'POST',
           url: 'server/get_favourites.php',
           data: { userId: userId }
+        }).success(function(data) {
+          deferred.resolve(data);
+        }).error(function(msg, code) {
+          deferred.reject(msg + ' ' + code);
+        });
+
+        return deferred.promise;
+
+      }
+
+      function deleteFavourites(statId, userId) {
+
+        var deferred = $q.defer();
+
+        $http({
+          method: 'POST',
+          url: 'server/delete_favourite.php',
+          data: { stationsId: statId, userId: userId }
         }).success(function(data) {
           deferred.resolve(data);
         }).error(function(msg, code) {

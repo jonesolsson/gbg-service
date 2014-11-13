@@ -1,1 +1,7 @@
 <h1>FAVS!</h1>
+<div ng-repeat="favstat in favouriteStations">
+  <h4>{{ favstat.Label }}</h4>
+  <p>Lediga cyklar: {{ favstat.FreeBikes }}</p>
+  <p>Lediga ställ: {{ favstat.FreeStands }}</p>
+  <button ng-click="deleteStation(favstat.Id)">Ta bort favvo</button>
+</div>

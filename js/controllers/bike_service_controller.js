@@ -16,20 +16,46 @@ angular.module('bikeCtrl', [])
     };
 
     Bike.getBikes( /*$scope.coords.currentLat, $scope.coords.currentLong*/ 57.710570, 11.987056, 500).then(function(data) {
-        //console.log(data);
-        $scope.stations = data;
+      $scope.stations = data;
+    });
+
+    //Get data from API to favouriteStations
+    Bike.getFav($scope.user.userId).then(function(data) {
+      $scope.favouriteStations = data;
     });
 
     //Save fav from nearest stations
     $scope.saveStation = function(StationId) {
+
       Bike.postFav(StationId, $scope.user.userId).then(function(data) {
         console.log(data);
-      });
-    };
+      }).then(function() {
 
-    Bike.getFav($scope.user.userId).then(function(data) {
-      console.log(data);
-    });
+        //Get new data from API
+          Bike.getFav($scope.user.userId).then(function(data) {
+            $scope.favouriteStations = data;
+          });
+      });
+
+    };
+    
+    //Delete favourite station
+    $scope.deleteStation = function(stationsId) {
+
+      Bike.deleteFav(stationsId, $scope.user.userId).then(function(data) {
+        console.log(data);
+      }).then(function() {
+
+        //Delete data from scope
+        angular.forEach($scope.favouriteStations, function(val, key) {
+          if(stationsId === val.Id) {
+            $scope.favouriteStations.splice(key, 1);
+          }
+        });
+
+      });
+
+    };
 
     //GOOGLE MAP
     Bike.getBikes($scope.coords.currentLat, $scope.coords.currentLong, 20000).then(function(data) {

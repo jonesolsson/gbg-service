@@ -34,8 +34,8 @@ function Curl($url, $returnTransfer) {
   ));
   $response = curl_exec($curl);
   curl_close($curl);
-  //return json_decode($response);
-  return $response;
+  //return $response;
+  return json_decode($response);
 }
 
 $stations = [];
@@ -44,13 +44,21 @@ foreach(getUserStations($userId) as $station) {
     $stations[] =  $station['stations_id'];
 }
 
-$test = [];
+$stationsArr = [];
 
 foreach($stations as $stationId) {
-  $test[] = Curl(
+  $stationsArr[] = Curl(
     'http://data.goteborg.se/StyrOchStall/v0.1/GetBikeStation/' . $stationId . '/' . $ApiId . '?format=json',
     true
   );
 }
 
-echo json_encode($test);
+$finalStation = [];
+
+foreach($stationsArr as $station) {
+  foreach($station->Stations as $stat) {
+    $finalStation[] = $stat;
+  }
+}
+
+echo json_encode($finalStation);
