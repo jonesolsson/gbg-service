@@ -15,9 +15,8 @@ angular.module('bikeCtrl', [])
       currentLong: getCoords.coords.longitude
     };
 
-    Bike.getBikes( /*$scope.coords.currentLat, $scope.coords.currentLong,*/ 57.710570, 11.987056, 500).then(function(data) {
+    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 500 ).then(function(data) {
       $scope.stations = data;
-      //console.log(data);
     });
 
     //Get data from API to favouriteStations
@@ -58,69 +57,94 @@ angular.module('bikeCtrl', [])
 
     };
 
-
   GoogleMapApi.then(function(maps) {
 
-    var directionsService = new maps.DirectionsService();
-    var directionsDisplay = new maps.DirectionsRenderer();
+    Bike.setDirMap($scope.coords.currentLat, $scope.coords.currentLong).then(function(data) {
 
-    var req = {
-      origin:  new maps.LatLng($scope.coords.currentLat, $scope.coords.currentLong),
-      destination: new maps.LatLng(57.710570, 11.987056),
-      travelMode: google.maps.TravelMode.DRIVING
-    };
+      //The actual map
+      $scope.mapp = data;
+      var directionsDisplay = new maps.DirectionsRenderer();
+      directionsDisplay.setMap(null);
 
-    directionsService.route(req, function(response, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      console.log('rövpiss');
-    }
-  });
+      $scope.showDirection = function(lat, long) {
 
-  });
+        $scope.calcRoute = function () {
 
+          var interval = setInterval(function() {
+            if($scope.mapp.control) {
+              directionsDisplay.setMap($scope.mapp.control.getGMap());
+              clearInterval(interval);
+            }
+          }, 1000);
 
+          var directionsService = new maps.DirectionsService();
 
+          var latLngOrigin = $scope.coords.currentLat + ', ' + $scope.coords.currentLong;
+          var latLngDestination = lat + ', ' + long;
 
+          var request = {
+            origin: latLngOrigin,
+            destination: latLngDestination,
+            travelMode: google.maps.TravelMode.WALKING
+          };
 
+          directionsService.route(request, function(response, status) {
 
+            if (status == maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+            } else {
+              console.log(response);
+            }
 
-    //GOOGLE MAP for "maps page"
-    Bike.getBikes($scope.coords.currentLat, $scope.coords.currentLong, 20000).then(function(data) {
-      $scope.map = {
-        center: { latitude: $scope.coords.currentLat, longitude: $scope.coords.currentLong },
-        zoom: 13
+          });
+
+          return;
+
+        };
+
+        $scope.calcRoute();
+
       };
 
-      $scope.map.markers = [];
-      $scope.map.bounds = {};
-      var i = 0;
+     });
 
-      angular.forEach(data, function(val, key) {
-        i++;
+  });
 
-        if(!val.AvailableBikeStands)
-          val.AvailableBikeStands = 0;
+  //GOOGLE MAP for "maps page"
+  Bike.getBikes($scope.coords.currentLat, $scope.coords.currentLong, 20000).then(function(data) {
+    $scope.map = {
+      center: { latitude: $scope.coords.currentLat, longitude: $scope.coords.currentLong },
+      zoom: 13
+    };
 
-        if(!val.AvailableBikes)
-          val.AvailableBikes = 0;
+    $scope.map.markers = [];
+    $scope.map.bounds = {};
+    var i = 0;
 
-        $scope.map.markers.push({
-          showWindow: false,
-          id: i,
-          latitude: val.Lat,
-          longitude: val.Long,
-          name: val.Name,
-          avalStands: val.AvailableBikeStands,
-          avalBikes: val.AvailableBikes,
-          icon: 'style/bike_downhill.png'
-        });
+    angular.forEach(data, function(val, key) {
+      i++;
 
+      if(!val.AvailableBikeStands)
+        val.AvailableBikeStands = 0;
+
+      if(!val.AvailableBikes)
+        val.AvailableBikes = 0;
+
+      $scope.map.markers.push({
+        showWindow: false,
+        id: i,
+        latitude: val.Lat,
+        longitude: val.Long,
+        name: val.Name,
+        avalStands: val.AvailableBikeStands,
+        avalBikes: val.AvailableBikes,
+        icon: 'style/bike_downhill.png'
       });
 
-      //Current position marker
-      $scope.marker = {
+    });
+
+    //Current position marker
+    $scope.marker = {
         id: 999,
         coords: {
           latitude: $scope.coords.currentLat,
@@ -129,6 +153,5 @@ angular.module('bikeCtrl', [])
       };
 
     });
-
 
   }]);

@@ -21,6 +21,7 @@ angular.module('bikeService', [])
           console.log('exists');
         else
           localStorageService.set( 'user',  setUserId() );
+
       }
 
       function getUserId() {
@@ -41,15 +42,34 @@ angular.module('bikeService', [])
         getCoords: getCoordinates,
         postFav: postFavourite,
         getFav: getFavourites,
-        deleteFav: deleteFavourites
+        deleteFav: deleteFavourites,
+        setDirMap: setDirectionsMap
       });
+
+      function setDirectionsMap(lat, long) {
+
+        var deferred = $q.defer();
+
+        deferred.resolve({
+          center: {
+              latitude: lat,
+              longitude: long
+            },
+          zoom: 13,
+          control: {}
+        });
+
+        return deferred.promise;
+
+      }
 
       function getCoordinates() {
 
         var deferred = $q.defer();
 
         navigator.geolocation.getCurrentPosition(function(data) {
-          deferred.resolve(data);
+          if(data)
+            deferred.resolve(data);
         });
 
         return deferred.promise;
@@ -87,7 +107,7 @@ angular.module('bikeService', [])
         }).success(function(data) {
           deferred.resolve(data);
         }).error(function(msg, code) {
-          deferred.reject(msg + ' ' + code);
+          deferred.reject(code);
         });
 
         return deferred.promise;
@@ -105,7 +125,7 @@ angular.module('bikeService', [])
         }).success(function(data) {
           deferred.resolve(data);
         }).error(function(msg, code) {
-          deferred.reject(msg + ' ' + code);
+          deferred.reject(code);
         });
 
         return deferred.promise;
@@ -123,13 +143,12 @@ angular.module('bikeService', [])
         }).success(function(data) {
           deferred.resolve(data);
         }).error(function(msg, code) {
-          deferred.reject(msg + ' ' + code);
+          deferred.reject(code);
         });
 
         return deferred.promise;
 
       }
-
 
   }];
 
