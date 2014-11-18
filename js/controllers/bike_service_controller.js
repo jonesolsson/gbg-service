@@ -63,12 +63,24 @@ angular.module('bikeCtrl', [])
 
       //The actual map
       $scope.mapp = data;
-      var directionsDisplay = new maps.DirectionsRenderer();
+
+      var mapMarkers = [],
+      directionsDisplay = new maps.DirectionsRenderer({ suppressMarkers : true });
+
       directionsDisplay.setMap(null);
 
       $scope.showDirection = function(lat, long) {
 
+        directionsDisplay.setMap(null);
+
         $scope.calcRoute = function () {
+                    
+          for(var i = 0; i <= mapMarkers.length; i++) {
+              angular.forEach(mapMarkers[i], function(val, key) {
+                //console.log(val);
+                val.setMap(null);
+              });
+          }
 
           var interval = setInterval(function() {
             if($scope.mapp.control) {
@@ -77,10 +89,9 @@ angular.module('bikeCtrl', [])
             }
           }, 1000);
 
-          var directionsService = new maps.DirectionsService();
-
-          var latLngOrigin = $scope.coords.currentLat + ', ' + $scope.coords.currentLong;
-          var latLngDestination = lat + ', ' + long;
+          var directionsService = new maps.DirectionsService(),
+              latLngOrigin = $scope.coords.currentLat + ', ' + $scope.coords.currentLong,
+              latLngDestination = lat + ', ' + long;
 
           var request = {
             origin: latLngOrigin,
@@ -88,10 +99,33 @@ angular.module('bikeCtrl', [])
             travelMode: google.maps.TravelMode.WALKING
           };
 
+          //Start and finish markers
+          var icons = {
+            start: new maps.MarkerImage('style/start.png'),
+            end: new maps.MarkerImage('style/end.png')
+          };
+
+          //Execute the directin operation
           directionsService.route(request, function(response, status) {
 
             if (status == maps.DirectionsStatus.OK) {
               directionsDisplay.setDirections(response);
+
+              var marker = [
+                            new maps.Marker({
+                              position: response.routes[ 0 ].legs[ 0 ].start_location,
+                              map: $scope.mapp.control.getGMap(),
+                              icon: icons.start
+                            }),
+                            new maps.Marker({
+                              position: response.routes[ 0 ].legs[ 0 ].end_location,
+                              map: $scope.mapp.control.getGMap(),
+                              icon: icons.end
+                            })
+                          ];
+
+              mapMarkers.push(marker);
+
             } else {
               console.log(response);
             }
