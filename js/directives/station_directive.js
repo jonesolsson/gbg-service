@@ -27,8 +27,33 @@ angular.module('stationsDirective', [])
           scrollTop: 0
         }, 600);
 
+        var winHeight = $(window).height(),
+            menuHeight = $('.menu-wrap').height(),
+            mapHeight = winHeight - menuHeight;
+
+        $('.nearby-map').css('height', mapHeight);
+        $('.nearby-map').css('padding-bottom', '15px');
+
       });
     }
   };
+
+})
+
+.directive('mapWrap', function() {
+
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+
+        var winHeight = $(window).height(),
+            menuHeight = $('.menu-wrap').height(),
+            mapHeight = winHeight - menuHeight;
+
+        $(element).css('height', mapHeight);
+        $(element).css('padding-bottom', '15px');
+
+      }
+    };
 
 });

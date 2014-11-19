@@ -1,5 +1,5 @@
-<div class="row" id="top">
-  <div class="col-xs-12">
+<div class="row">
+  <div class="col-xs-12 nearby-map">
     <ui-gmap-google-map
 
         ng-show="nearestMap"
@@ -18,15 +18,13 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div>
-      <div ng-repeat="station in stations | orderBy: 'Distance' ">
-        <h3>{{ station.Name }}</h3>
-        <p available-bikes>Lediga cyklar: {{ AvailableBikes }}</p>
-        <p>Lediga ställ: {{ station.AvailableBikeStands }}</p>
-        <p>Avstånd: {{ station.Distance }}m</p>
-        <button ng-click="showDirection(station.Lat, station.Long)" scroll-top>Hitta</button>
-        <button ng-click="saveStation(station.StationId)">Spara Favvo</button>
-      </div>
+    <div ng-repeat="station in stations | orderBy: 'Distance' " class="near-station">
+      <h2>{{ station.Name }}</h2>
+      <p available-bikes>Lediga cyklar: {{ AvailableBikes }}</p>
+      <p>Lediga ställ: {{ station.AvailableBikeStands }}</p>
+      <p>Avstånd: {{ station.Distance }}m</p>
+      <button ng-click="showDirection(station.Lat, station.Long)" scroll-top>Hitta</button>
+      <button ng-click="saveStation(station.StationId)">Spara Favvo</button>
     </div>
   </div>
 </div>

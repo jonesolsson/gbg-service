@@ -1,7 +1,4 @@
-.angular-google-map-container {
-  height: 400px;
-}
-h3 {
+h2 {
   margin-top: 5px;
 }
 /* Main menu */
@@ -21,6 +18,9 @@ h3 {
   border-radius: 25px;
   cursor: pointer;
 }
+.main-menu li:first-child {
+  margin-left: 0;
+}
 .main-menu li i {
   font-size: 30px;
   position: absolute;
@@ -28,4 +28,20 @@ h3 {
   left: 50%;
   margin-top: -21px;
   margin-left: -11.5px;
+}
+.angular-google-map {
+  height: 100%;
+}
+.angular-google-map-container {
+  height: 100%;
+}
+.gm-style-iw {
+  width: 145px;
+}
+.infoWindow h3 {
+  font-size: 15px;
+  margin: 0 0 5px 0;
+}
+.infoWindow p {
+  margin-bottom: 3.5px;
 }

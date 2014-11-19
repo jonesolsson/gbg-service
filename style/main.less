@@ -1,6 +1,6 @@
-.angular-google-map-container { height: 400px; }
 
-h3 {
+
+h2 {
   margin-top: 5px;
 }
 
@@ -19,6 +19,9 @@ h3 {
     border: 1px solid;
     border-radius: 25px;
     cursor: pointer;
+    &:first-child {
+      margin-left: 0;
+    }
     i {
       font-size: 30px;
       position: absolute;
@@ -27,5 +30,28 @@ h3 {
       margin-top: -21px;
       margin-left: -11.5px;
     }
+  }
+}
+
+//Home.map map
+.angular-google-map {
+  height: 100%;
+}
+
+.angular-google-map-container {
+  height: 100%;
+}
+
+.gm-style-iw {
+  width: 145px;
+}
+
+.infoWindow {
+  h3 {
+    font-size: 15px;
+    margin: 0 0 5px 0;
+  }
+  p {
+    margin-bottom: 3.5px;
   }
 }

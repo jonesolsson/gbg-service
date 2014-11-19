@@ -75,6 +75,7 @@ angular.module('bikeCtrl', [])
         directionsDisplay.setMap(null);
         //Show the map
         $scope.nearestMap = true;
+        maps.event.trigger($scope.mapp, 'resize');
 
         $scope.calcRoute = function () {
 
