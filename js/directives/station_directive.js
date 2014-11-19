@@ -10,7 +10,24 @@ angular.module('stationsDirective', [])
       }
       else {
         scope.AvailableBikes = scope.station.AvailableBikes;
-      }        
+      }
+    }
+  };
+
+})
+
+.directive('scrollTop', function() {
+
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      element.on('click', function() {
+
+        $("html, body").animate({
+          scrollTop: 0
+        }, 600);
+
+      });
     }
   };
 

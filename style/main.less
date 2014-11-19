@@ -1,17 +1,31 @@
 .angular-google-map-container { height: 400px; }
 
+h3 {
+  margin-top: 5px;
+}
+
 /* Main menu */
 .main-menu {
+  margin: 20px 0;
   list-style-type: none;
-  margin: 0 auto;
+  text-align: center;
+  padding-left: 0;
   li{
-    padding: 20px;
-    display: inline;
-    padding-left: 10px;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
     border: 1px solid;
-    border-radius: 29px;
+    border-radius: 25px;
+    cursor: pointer;
     i {
-      font-size: 35px;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -21px;
+      margin-left: -11.5px;
     }
   }
 }

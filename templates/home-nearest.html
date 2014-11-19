@@ -1,22 +1,8 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div>
-      <div ng-repeat="station in stations | orderBy: 'Distance' ">
-        <h3>{{ station.Name }}</h3>
-        <p available-bikes>Lediga cyklar: {{ AvailableBikes }}</p>
-        <p>Lediga ställ: {{ station.AvailableBikeStands }}</p>
-        <p>Avstånd: {{ station.Distance }}m</p>
-        <!-- <a href="https://www.google.com/maps/dir/{{coords.currentLat}}+{{coords.currentLong}}/{{station.Lat}},{{station.Long}}">Hitta hit</a> -->
-        <button ng-click="showDirection(station.Lat, station.Long)">Hitta</button>
-        <button ng-click="saveStation(station.StationId)">Spara Favvo</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
+<div class="row" id="top">
   <div class="col-xs-12">
     <ui-gmap-google-map
+
+        ng-show="nearestMap"
 
         id="map-canvas"
         center="mapp.center"
@@ -27,5 +13,20 @@
 
     >
     </ui-gmap-google-map>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div>
+      <div ng-repeat="station in stations | orderBy: 'Distance' ">
+        <h3>{{ station.Name }}</h3>
+        <p available-bikes>Lediga cyklar: {{ AvailableBikes }}</p>
+        <p>Lediga ställ: {{ station.AvailableBikeStands }}</p>
+        <p>Avstånd: {{ station.Distance }}m</p>
+        <button ng-click="showDirection(station.Lat, station.Long)" scroll-top>Hitta</button>
+        <button ng-click="saveStation(station.StationId)">Spara Favvo</button>
+      </div>
+    </div>
   </div>
 </div>

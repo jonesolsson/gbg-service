@@ -15,7 +15,10 @@ angular.module('bikeCtrl', [])
       currentLong: getCoords.coords.longitude
     };
 
-    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 500 ).then(function(data) {
+    //Nearest map not visible
+    $scope.nearestMap = false;
+
+    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 1500 ).then(function(data) {
       $scope.stations = data;
     });
 
@@ -57,7 +60,7 @@ angular.module('bikeCtrl', [])
 
     };
 
-  GoogleMapApi.then(function(maps) {
+ GoogleMapApi.then(function(maps) {
 
     Bike.setDirMap($scope.coords.currentLat, $scope.coords.currentLong).then(function(data) {
 
@@ -65,19 +68,19 @@ angular.module('bikeCtrl', [])
       $scope.mapp = data;
 
       var mapMarkers = [],
-      directionsDisplay = new maps.DirectionsRenderer({ suppressMarkers : true });
-
-      directionsDisplay.setMap(null);
+          directionsDisplay = new maps.DirectionsRenderer({ suppressMarkers : true });
 
       $scope.showDirection = function(lat, long) {
 
         directionsDisplay.setMap(null);
+        //Show the map
+        $scope.nearestMap = true;
 
         $scope.calcRoute = function () {
-                    
+
+          //Clear the markers before setting the new ones
           for(var i = 0; i <= mapMarkers.length; i++) {
               angular.forEach(mapMarkers[i], function(val, key) {
-                //console.log(val);
                 val.setMap(null);
               });
           }
