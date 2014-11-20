@@ -1,9 +1,40 @@
+body {
+  background-color: #f0f0f0;
+}
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
+}
+h1 {
+  font-size: 28px;
+  margin: 15px 0 0 0;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: #295dab;
+}
+/* .fav-heading {
+  color: @orange;
+}
+ */
 h2 {
   margin-top: 5px;
   font-size: 22px;
 }
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
 /* Main menu */
 .menu-row {
+  margin-left: 0;
+  margin-right: 0;
   background-color: #295dab;
 }
 .main-menu {
@@ -31,22 +62,102 @@ h2 {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -20px;
+  margin-top: -19px;
   margin-left: -10px;
 }
-.near-station button {
-  background-color: #fff;
-  width: 25px;
-  height: 25px;
-  border-radius: 12.5px;
-  border: 1px solid;
+.main-menu li .ion-map {
+  margin-left: -11px;
 }
-.near-station p {
+.main-menu li .ion-navigate {
+  margin-left: -13px;
+}
+.main-menu li .ion-heart {
+  margin-left: -10px;
+}
+/* Nearby Map */
+.nearby-stations-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.nearby-stations-wrap {
+  padding-right: 0;
+  padding-left: 0;
+}
+.near-station {
+  margin: 5px 5px 10px 5px;
+  background-color: #fff;
+}
+.station-diff,
+.fav-station-content {
+  overflow: hidden;
+  padding: 10px 10px;
+  border-left: 4px solid rgba(41, 93, 171, 0.8);
+}
+.station-diff h2,
+.fav-station-content h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+.station-info,
+.fav-station-info {
+  float: left;
+  width: 50%;
+}
+.station-info p,
+.fav-station-info p {
+  font-size: 13px;
   margin: 0 0 0;
   font-family: 'georgia', serif;
 }
-.near-station span {
+.station-info span,
+.fav-station-info span {
   font-weight: 600;
+  font-family: 'Noto Sans';
+}
+.station-btns {
+  height: 60px;
+}
+.station-btns,
+.fav-station-btns {
+  float: left;
+  width: 50%;
+}
+.station-btns div,
+.fav-station-btns div {
+  display: inline-block;
+  position: relative;
+  top: 20%;
+  left: 50%;
+  margin-left: -42px;
+}
+.station-btns button,
+.fav-station-btns button {
+  background-color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 17.5px;
+  border: 1px solid rgba(167, 67, 59, 0.9);
+  margin-left: 5px;
+  padding-top: 4px;
+}
+.station-btns button i,
+.fav-station-btns button i {
+  font-size: 20px;
+  color: rgba(167, 67, 59, 0.9);
+}
+/* Favourite Stations */
+.fav-stations-wrap {
+  padding-right: 0;
+  padding-left: 0;
+}
+.fav-station {
+  margin: 5px 5px 10px 5px;
+  background-color: #fff;
+}
+.fav-station .fav-station-content {
+  overflow: hidden;
+  padding: 10px 10px;
+  border-left: 4px solid rgba(242, 121, 70, 0.8);
 }
 .angular-google-map {
   height: 100%;
@@ -56,7 +167,8 @@ h2 {
 }
 .home-map,
 .nearby-map,
-.nearby-stations-wrap {
+.nearby-stations-wrap,
+.fav-stations-wrap {
   padding-top: 15px;
 }
 .gm-style-iw {

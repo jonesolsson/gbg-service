@@ -6,7 +6,8 @@ angular.module('gbgService', [
   'bikeService',
   'stationsDirective',
   'LocalStorageModule',
-  'angularUUID2'
+  'angularUUID2',
+  'filters'
 ])
 
  .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {

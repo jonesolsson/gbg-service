@@ -1,4 +1,10 @@
 <div class="row">
+  <div class="col-xs-12">
+    <h1>Närmsta stationer</h1>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-xs-12 nearby-map hide" map-wrap>
     <ui-gmap-google-map
 
@@ -14,15 +20,23 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row nearby-stations-row">
   <div class="col-xs-12 nearby-stations-wrap">
     <div ng-repeat="station in stations | orderBy: 'Distance' " class="near-station">
-      <h2>{{ station.Name }}</h2>
-      <p available-bikes><span>Lediga cyklar:</span> {{ AvailableBikes }}</p>
-      <p><span>Lediga ställ:</span> {{ station.AvailableBikeStands }}</p>
-      <p><span>Avstånd:</span> {{ station.Distance }}m</p>
-      <button ng-click="showDirection(station.Lat, station.Long)" scroll-top><i class="ion-ios7-location"></i></button>
-      <button ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
-    </div>
+      <div class="station-diff">
+        <h2>{{ station.Name }}</h2>
+        <div class="station-info">
+          <p available-bikes><span>Lediga cyklar:</span> {{ AvailableBikes }}</p>
+          <p><span>Lediga ställ:</span> {{ station.AvailableBikeStands }}</p>
+          <p><span>Avstånd:</span> {{ station.Distance }}m</p>
+        </div>
+        <div class="station-btns">
+          <div>
+            <button ng-click="showDirection(station.Lat, station.Long)" scroll-top><i class="ion-ios7-location"></i></button>
+            <button ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+          </div>
+        </div>
+      </div>
+      </div>
   </div>
 </div>
