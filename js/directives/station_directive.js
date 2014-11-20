@@ -5,12 +5,15 @@ angular.module('stationsDirective', [])
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
+
+      //Bikes
       if(!scope.station.AvailableBikes) {
         scope.AvailableBikes = scope.station.BikeStands - scope.station.AvailableBikeStands;
       }
       else {
         scope.AvailableBikes = scope.station.AvailableBikes;
       }
+
     }
   };
 

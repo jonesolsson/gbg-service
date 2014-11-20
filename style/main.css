@@ -1,7 +1,11 @@
 h2 {
   margin-top: 5px;
+  font-size: 22px;
 }
 /* Main menu */
+.menu-row {
+  background-color: #295dab;
+}
 .main-menu {
   margin: 20px 0;
   list-style-type: none;
@@ -13,8 +17,8 @@ h2 {
   display: inline-block;
   width: 50px;
   height: 50px;
-  margin-left: 15px;
-  border: 1px solid;
+  margin-left: 18px;
+  border: 2px solid #ffffff;
   border-radius: 25px;
   cursor: pointer;
 }
@@ -22,18 +26,38 @@ h2 {
   margin-left: 0;
 }
 .main-menu li i {
-  font-size: 30px;
+  color: #ffffff;
+  font-size: 26px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -21px;
-  margin-left: -11.5px;
+  margin-top: -20px;
+  margin-left: -10px;
+}
+.near-station button {
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+  border: 1px solid;
+}
+.near-station p {
+  margin: 0 0 0;
+  font-family: 'georgia', serif;
+}
+.near-station span {
+  font-weight: 600;
 }
 .angular-google-map {
   height: 100%;
 }
 .angular-google-map-container {
   height: 100%;
+}
+.home-map,
+.nearby-map,
+.nearby-stations-wrap {
+  padding-top: 15px;
 }
 .gm-style-iw {
   width: 145px;

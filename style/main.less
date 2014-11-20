@@ -2,9 +2,15 @@
 
 h2 {
   margin-top: 5px;
+  font-size: 22px;
 }
 
 /* Main menu */
+.menu-row {
+  //background-color: rgba(249,197,99, 1);
+  background-color: rgba(41,93, 171, 1);
+}
+
 .main-menu {
   margin: 20px 0;
   list-style-type: none;
@@ -15,21 +21,39 @@ h2 {
     display: inline-block;
     width: 50px;
     height: 50px;
-    margin-left: 15px;
-    border: 1px solid;
+    margin-left: 18px;
+    border: 2px solid rgba(255, 255, 255, 1);
     border-radius: 25px;
     cursor: pointer;
     &:first-child {
       margin-left: 0;
     }
     i {
-      font-size: 30px;
+      color: rgba(255, 255, 255, 1);
+      font-size: 26px;
       position: absolute;
       top: 50%;
       left: 50%;
-      margin-top: -21px;
-      margin-left: -11.5px;
+      margin-top: -20px;
+      margin-left: -10px;
     }
+  }
+}
+
+.near-station {
+  button {
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+    border: 1px solid;
+  }
+  p {
+    margin: 0 0 0;
+    font-family: 'georgia', serif;
+  }
+  span {
+    font-weight: 600;
   }
 }
 
@@ -40,6 +64,12 @@ h2 {
 
 .angular-google-map-container {
   height: 100%;
+}
+
+.home-map,
+.nearby-map,
+.nearby-stations-wrap {
+  padding-top: 15px;
 }
 
 .gm-style-iw {
@@ -63,5 +93,3 @@ h2 {
 .show {
   opacity: 1;
 }
-
-//ng-show="nearestMap"
