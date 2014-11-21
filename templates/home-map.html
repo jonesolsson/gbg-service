@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row home-map-wrap" scroll-top>
 
   <div class="col-xs-12 home-map" map-wrap>
 
@@ -22,4 +22,38 @@
       </ui-gmap-google-map>
 
   </div>
+
 </div>
+
+<div class="row show-list-wrap">
+  <div class="col-xs-12 show-list">
+    <p>Stationslista</p>
+    <p class="down"><i class="ion-arrow-down-b"></i></p>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-xs-12 all-stations-list-wrap">
+    <div ng-repeat="station in allStaions | orderBy: 'Name'" class="all-stations-list">
+      <h2>{{ station.Name }}</h2>
+      <div class="all-stations-content">
+
+        <div class="all-stations-info">
+          <p available-bikes><span>Lediga cyklar:</span> {{ AvailableBikes }}</p>
+          <p><span>Lediga ställ:</span> {{ station.AvailableBikeStands }}</p>
+        </div>
+
+        <div class="all-stations-btns">
+          <div>
+            <button ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+ <div class="scrollup" scroll-top-map><i class="ion-arrow-up-b"></i></div>

@@ -15,11 +15,14 @@ angular.module('bikeCtrl', [])
       currentLong: getCoords.coords.longitude
     };
 
-    //Nearest map not visible
-    $scope.nearestMap = false;
-
+    //Get nearby stations
     Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 1500 ).then(function(data) {
       $scope.stations = data;
+    });
+
+    //Get all stations
+    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 10000 ).then(function(data) {
+      $scope.allStaions = data;
     });
 
     //Get data from API to favouriteStations

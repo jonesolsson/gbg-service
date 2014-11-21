@@ -19,13 +19,9 @@ h1 {
   letter-spacing: 0.4px;
   color: #295dab;
 }
-/* .fav-heading {
-  color: @orange;
-}
- */
 h2 {
-  margin-top: 5px;
-  font-size: 22px;
+  margin-top: 0;
+  font-size: 20px;
 }
 .row {
   margin-left: 0;
@@ -87,43 +83,52 @@ h2 {
   margin: 5px 5px 10px 5px;
   background-color: #fff;
 }
+/* Stations lists */
 .station-diff,
 .fav-station-content {
   overflow: hidden;
   padding: 10px 10px;
   border-left: 4px solid rgba(41, 93, 171, 0.8);
 }
-.station-diff h2,
-.fav-station-content h2 {
-  font-size: 20px;
-  margin-top: 0;
+.all-stations-content {
+  overflow: hidden;
+}
+.all-stations-list {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(41, 93, 171, 0.3);
 }
 .station-info,
-.fav-station-info {
+.fav-station-info,
+.all-stations-info {
   float: left;
   width: 50%;
 }
 .station-info p,
-.fav-station-info p {
+.fav-station-info p,
+.all-stations-info p {
   font-size: 13px;
   margin: 0 0 0;
   font-family: 'georgia', serif;
 }
 .station-info span,
-.fav-station-info span {
+.fav-station-info span,
+.all-stations-info span {
   font-weight: 600;
   font-family: 'Noto Sans';
 }
+/* Buttons */
 .station-btns {
   height: 60px;
 }
 .station-btns,
-.fav-station-btns {
+.fav-station-btns,
+.all-stations-btns {
   float: left;
   width: 50%;
 }
 .station-btns div,
-.fav-station-btns div {
+.fav-station-btns div,
+.all-stations-btns div {
   display: inline-block;
   position: relative;
   top: 20%;
@@ -131,7 +136,8 @@ h2 {
   margin-left: -42px;
 }
 .station-btns button,
-.fav-station-btns button {
+.fav-station-btns button,
+.all-stations-btns button {
   background-color: #fff;
   width: 35px;
   height: 35px;
@@ -141,9 +147,13 @@ h2 {
   padding-top: 4px;
 }
 .station-btns button i,
-.fav-station-btns button i {
+.fav-station-btns button i,
+.all-stations-btns button i {
   font-size: 20px;
   color: rgba(167, 67, 59, 0.9);
+}
+.all-stations-btns button {
+  background-color: #f0f0f0;
 }
 /* Favourite Stations */
 .fav-stations-wrap {
@@ -181,9 +191,41 @@ h2 {
 .infoWindow p {
   margin-bottom: 3.5px;
 }
+.show-list {
+  text-align: center;
+}
+.show-list .down {
+  margin-top: -10px;
+  margin-bottom: -2px;
+}
+.show-list i {
+  font-size: 25px;
+}
+.show-list p {
+  font-size: 14px;
+  margin: 0;
+}
 .hide {
   opacity: 0;
 }
 .show {
   opacity: 1;
+}
+.scrollup {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: none;
+  background-color: rgba(248, 69, 59, 0.4);
+  color: #fff;
+  cursor: pointer;
+}
+.scrollup i {
+  font-size: 35px;
+  position: relative;
+  left: 50%;
+  margin-left: -11.5px;
 }
