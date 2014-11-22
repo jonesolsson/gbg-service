@@ -23,12 +23,16 @@ h1 {
   margin: 15px 0 0 0;
   font-weight: 400;
   letter-spacing: 0.4px;
-  color: @blue;
+  color: #333;
 }
 
 h2 {
   margin-top: 0;
   font-size: 20px;
+}
+
+a {
+  font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
 }
 
 .row {
@@ -41,6 +45,10 @@ h2 {
   margin-left: 0;
   margin-right: 0;
   background-color: rgba(41,93, 171, 1);
+}
+
+.main-menu-large {
+  display: none;
 }
 
 .main-menu {
@@ -85,6 +93,7 @@ h2 {
 .nearby-stations-row {
   margin-left: 0;
   margin-right: 0;
+  padding-top: 15px
 }
 
 .nearby-stations-wrap {
@@ -168,8 +177,7 @@ h2 {
   }
 }
 
-/* Favourite Stations */
-.fav-stations-wrap {
+.fav-stations {
   padding-right: 0;
   padding-left: 0;
 }
@@ -195,7 +203,6 @@ h2 {
 
 .home-map,
 .nearby-map,
-.nearby-stations-wrap,
 .fav-stations-wrap {
   padding-top: 15px;
 }
@@ -254,4 +261,83 @@ h2 {
       left: 50%;
       margin-left: -11.5px;
     }
+}
+
+@media (min-width: 992px) {
+
+  .container {
+    width: 100%;
+  }
+
+  .row {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+
+  .main-menu {
+    display: none;
+  }
+
+  .main-menu-large {
+    display: block;
+    margin: 20px 0;
+    padding: 10px 150px 10px;
+    list-style-type: none;
+    padding-left: 0;
+    float: right;
+    li {
+      display: inline-block;
+      margin-left: 15px;
+      letter-spacing: .4px;
+      border: 2px solid #fff;
+      padding: 5px 15px;
+      border-radius: 4px;
+      a {
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .home-map-wrap,
+  .nearby-map-wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-map,
+  .nearby-map {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+
+  .near-heading,
+  .fav-heading {
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .near-station,
+  .fav-station {
+    margin: 15px 10px 10px;
+  }
+
+  .show-list {
+    padding: 15px 0;
+    p {
+      font-size: 25px;
+    }
+    .down {
+      margin-top: -18px;
+    }
+    i {
+      font-size: 40px;
+    }
+  }
+
 }

@@ -4,9 +4,9 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12 fav-stations-wrap">
-    <div ng-repeat="favstat in favouriteStations" class="fav-station">
+<div class="row fav-stations-wrap">
+  <div ng-repeat="favstat in favouriteStations" class="col-xs-12 col-sm-6 col-md-4 fav-stations">
+    <div class="fav-station">
       <div class="fav-station-content">
         <h2>{{ favstat.Label | capitalize }}</h2>
         <div class="fav-station-info">

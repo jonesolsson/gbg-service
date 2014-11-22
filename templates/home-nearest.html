@@ -4,8 +4,9 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row nearby-map-wrap">
   <div class="col-xs-12 nearby-map hide" map-wrap>
+    <button ng-click="hideMap()">göm karta</button>
     <ui-gmap-google-map
 
         id="map-canvas"
@@ -21,8 +22,8 @@
 </div>
 
 <div class="row nearby-stations-row">
-  <div class="col-xs-12 nearby-stations-wrap">
-    <div ng-repeat="station in stations | orderBy: 'Distance' " class="near-station">
+  <div ng-repeat="station in stations | orderBy: 'Distance' " class="col-xs-12 col-sm-6 col-md-4 nearby-stations-wrap">
+    <div class="near-station">
       <div class="station-diff">
         <h2>{{ station.Name }}</h2>
         <div class="station-info">
