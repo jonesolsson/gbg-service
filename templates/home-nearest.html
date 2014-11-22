@@ -22,7 +22,7 @@
 </div>
 
 <div class="row nearby-stations-row">
-  <div ng-repeat="station in stations | orderBy: 'Distance' " class="col-xs-12 col-sm-6 col-md-4 nearby-stations-wrap">
+  <div ng-repeat="station in stations | orderBy: 'Distance' " class="col-xs-12 col-sm-6 col-md-6 col-lg-4 nearby-stations-wrap">
     <div class="near-station">
       <div class="station-diff">
         <h2>{{ station.Name }}</h2>
@@ -33,8 +33,12 @@
         </div>
         <div class="station-btns">
           <div>
-            <button ng-click="showDirection(station.Lat, station.Long)" scroll-top-map><i class="ion-ios7-location"></i></button>
-            <button ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+            <button class="small-btn" ng-click="showDirection(station.Lat, station.Long)" scroll-top-map><i class="ion-ios7-location"></i></button>
+            <button class="small-btn" ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+
+            <!-- LARGE SCREEN BUTTONS -->
+            <button class="large-btn" ng-click="showDirection(station.Lat, station.Long)" scroll-top-map><i class="ion-ios7-location"></i>Hitta på karta</button>
+            <button class="large-btn" ng-click="saveStation(station.StationId)"><i class="ion-heart"></i>Spara station</button>
           </div>
         </div>
       </div>

@@ -31,6 +31,10 @@ h2 {
   font-size: 20px;
 }
 
+p {
+  font-size: 13px;
+}
+
 a {
   font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
 }
@@ -118,6 +122,10 @@ a {
   overflow: hidden;
 }
 
+.all-stations-list-wrap {
+  padding: 15px;
+}
+
 .all-stations-list {
   padding: 10px 0;
   border-bottom: 1px solid rgba(41,93,171, .3);
@@ -129,7 +137,6 @@ a {
   float: left;
   width: 50%;
   p {
-    font-size: 13px;
     margin: 0 0 0;
     font-family: 'georgia', serif;
   }
@@ -140,6 +147,10 @@ a {
 }
 
 /* Buttons */
+.large-btn {
+  display: none;
+}
+
 .station-btns {
   height: 60px;
 }
@@ -156,7 +167,7 @@ a {
     left: 50%;
     margin-left: -42px;
   }
-  button {
+  .small-btn {
     background-color: #fff;
     width: 35px;
     height: 35px;
@@ -172,7 +183,7 @@ a {
 }
 
 .all-stations-btns {
-  button {
+  .small-btn {
     background-color: #f0f0f0;
   }
 }
@@ -238,6 +249,7 @@ a {
 
 .hide {
   opacity: 0;
+  transition: opacity 1.5s ease;
 }
 
 .show {
@@ -263,6 +275,10 @@ a {
     }
 }
 
+
+  /* LARGE SCREENS */
+
+
 @media (min-width: 992px) {
 
   .container {
@@ -275,7 +291,15 @@ a {
   }
 
   h1 {
-    font-size: 35px;
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 27px;
+  }
+
+  p {
+    font-size: 17px;
   }
 
   .main-menu {
@@ -290,15 +314,23 @@ a {
     padding-left: 0;
     float: right;
     li {
+      cursor: pointer;
       display: inline-block;
       margin-left: 15px;
       letter-spacing: .4px;
       border: 2px solid #fff;
       padding: 5px 15px;
       border-radius: 4px;
+      &:hover {
+        background-color: #fff;
+        a {
+          color: @blue;
+        }
+      }
       a {
         color: #fff;
         font-size: 16px;
+        text-decoration: none;
       }
     }
   }
@@ -338,6 +370,120 @@ a {
     i {
       font-size: 40px;
     }
+  }
+
+  .all-stations-list {
+    padding: 10px 30px 10px 0;
+    margin: 10px 0;
+    border: none;
+    h2 {
+      background-color: rgba(41,93,171,.8);
+      padding: 7px 7px;
+      color: #fff;
+      border-radius: 3px;
+    }
+    p {
+      font-weight: 800;
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .station-info,
+  .fav-station-info {
+    p {
+      font-weight: 800;
+    }
+    span {
+      font-weight: 400;
+    }
+  }
+
+  .all-stations-info,
+  .all-stations-btns {
+    width: 50%;
+  }
+
+  /* Buttons */
+  .all-stations-btns,
+  .station-btns,
+  .fav-station-btns {
+    div {
+      width: 100%;
+      position: inherit;
+      top: 0;
+      left: 0;
+      margin: 0;
+    }
+  }
+
+  .all-stations-btns {
+    .large-btn {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .small-btn {
+    display: none;
+  }
+
+  .station-btns {
+    height: 100%;
+    .large-btn {
+      background-color: #fff;
+      padding: 5px 15px;
+      margin: 5px 0;
+    }
+  }
+
+  .fav-station-btns {
+    .large-btn {
+      background-color: #fff;
+    }
+  }
+
+  .large-btn {
+      display: inherit;
+      border-radius: 3px;
+      border: 1px solid rgba(248,69,59,.8);
+      padding: 8px 15px;
+      font-size: 17px;
+      color: rgba(248,69,59,.8);
+      float: left;
+      width: 100%;
+      transition: 0.5s ease;
+      &:hover {
+        background-color: rgba(248,69,59,.8);
+        color: #fff;
+        i {
+          color: #fff;
+        }
+      }
+    i {
+      font-size: 25px;
+      margin-right: 5px;
+    }
+  }
+
+  .station-info,
+  .station-btns {
+    width: 50%;
+  }
+
+
+}
+
+@media (min-width: 1200px) {
+
+  .all-stations-info,
+  .all-stations-btns {
+    width: 50%;
+  }
+
+  .station-info,
+  .station-btns {
+    width: 50%;
   }
 
 }

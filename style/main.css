@@ -23,6 +23,9 @@ h2 {
   margin-top: 0;
   font-size: 20px;
 }
+p {
+  font-size: 13px;
+}
 a {
   font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
 }
@@ -100,6 +103,9 @@ a {
 .all-stations-content {
   overflow: hidden;
 }
+.all-stations-list-wrap {
+  padding: 15px;
+}
 .all-stations-list {
   padding: 10px 0;
   border-bottom: 1px solid rgba(41, 93, 171, 0.3);
@@ -113,7 +119,6 @@ a {
 .station-info p,
 .fav-station-info p,
 .all-stations-info p {
-  font-size: 13px;
   margin: 0 0 0;
   font-family: 'georgia', serif;
 }
@@ -124,6 +129,9 @@ a {
   font-family: 'Noto Sans';
 }
 /* Buttons */
+.large-btn {
+  display: none;
+}
 .station-btns {
   height: 60px;
 }
@@ -142,9 +150,9 @@ a {
   left: 50%;
   margin-left: -42px;
 }
-.station-btns button,
-.fav-station-btns button,
-.all-stations-btns button {
+.station-btns .small-btn,
+.fav-station-btns .small-btn,
+.all-stations-btns .small-btn {
   background-color: #fff;
   width: 35px;
   height: 35px;
@@ -153,13 +161,13 @@ a {
   margin-left: 5px;
   padding-top: 4px;
 }
-.station-btns button i,
-.fav-station-btns button i,
-.all-stations-btns button i {
+.station-btns .small-btn i,
+.fav-station-btns .small-btn i,
+.all-stations-btns .small-btn i {
   font-size: 20px;
   color: rgba(167, 67, 59, 0.9);
 }
-.all-stations-btns button {
+.all-stations-btns .small-btn {
   background-color: #f0f0f0;
 }
 .fav-stations {
@@ -212,6 +220,7 @@ a {
 }
 .hide {
   opacity: 0;
+  transition: opacity 1.5s ease;
 }
 .show {
   opacity: 1;
@@ -234,6 +243,7 @@ a {
   left: 50%;
   margin-left: -11.5px;
 }
+/* LARGE SCREENS */
 @media (min-width: 992px) {
   .container {
     width: 100%;
@@ -243,7 +253,13 @@ a {
     padding-right: 8%;
   }
   h1 {
-    font-size: 35px;
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 27px;
+  }
+  p {
+    font-size: 17px;
   }
   .main-menu {
     display: none;
@@ -257,6 +273,7 @@ a {
     float: right;
   }
   .main-menu-large li {
+    cursor: pointer;
     display: inline-block;
     margin-left: 15px;
     letter-spacing: .4px;
@@ -264,9 +281,16 @@ a {
     padding: 5px 15px;
     border-radius: 4px;
   }
+  .main-menu-large li:hover {
+    background-color: #fff;
+  }
+  .main-menu-large li:hover a {
+    color: #295dab;
+  }
   .main-menu-large li a {
     color: #fff;
     font-size: 16px;
+    text-decoration: none;
   }
   .home-map-wrap,
   .nearby-map-wrap {
@@ -299,5 +323,97 @@ a {
   }
   .show-list i {
     font-size: 40px;
+  }
+  .all-stations-list {
+    padding: 10px 30px 10px 0;
+    margin: 10px 0;
+    border: none;
+  }
+  .all-stations-list h2 {
+    background-color: rgba(41, 93, 171, 0.8);
+    padding: 7px 7px;
+    color: #fff;
+    border-radius: 3px;
+  }
+  .all-stations-list p {
+    font-weight: 800;
+  }
+  .all-stations-list p span {
+    font-weight: 400;
+  }
+  .station-info p,
+  .fav-station-info p {
+    font-weight: 800;
+  }
+  .station-info span,
+  .fav-station-info span {
+    font-weight: 400;
+  }
+  .all-stations-info,
+  .all-stations-btns {
+    width: 50%;
+  }
+  /* Buttons */
+  .all-stations-btns div,
+  .station-btns div,
+  .fav-station-btns div {
+    width: 100%;
+    position: inherit;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+  .all-stations-btns .large-btn {
+    background-color: #f0f0f0;
+  }
+  .small-btn {
+    display: none;
+  }
+  .station-btns {
+    height: 100%;
+  }
+  .station-btns .large-btn {
+    background-color: #fff;
+    padding: 5px 15px;
+    margin: 5px 0;
+  }
+  .fav-station-btns .large-btn {
+    background-color: #fff;
+  }
+  .large-btn {
+    display: inherit;
+    border-radius: 3px;
+    border: 1px solid rgba(248, 69, 59, 0.8);
+    padding: 8px 15px;
+    font-size: 17px;
+    color: rgba(248, 69, 59, 0.8);
+    float: left;
+    width: 100%;
+    transition: 0.5s ease;
+  }
+  .large-btn:hover {
+    background-color: rgba(248, 69, 59, 0.8);
+    color: #fff;
+  }
+  .large-btn:hover i {
+    color: #fff;
+  }
+  .large-btn i {
+    font-size: 25px;
+    margin-right: 5px;
+  }
+  .station-info,
+  .station-btns {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .all-stations-info,
+  .all-stations-btns {
+    width: 50%;
+  }
+  .station-info,
+  .station-btns {
+    width: 50%;
   }
 }

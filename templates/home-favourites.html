@@ -5,7 +5,7 @@
 </div>
 
 <div class="row fav-stations-wrap">
-  <div ng-repeat="favstat in favouriteStations" class="col-xs-12 col-sm-6 col-md-4 fav-stations">
+  <div ng-repeat="favstat in favouriteStations" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 fav-stations">
     <div class="fav-station">
       <div class="fav-station-content">
         <h2>{{ favstat.Label | capitalize }}</h2>
@@ -15,8 +15,11 @@
         </div>
         <div class="fav-station-btns">
           <div>
-            <button ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i></button>
-          </div>
+            <button class="small-btn" ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i></button>
+
+            <!-- LARGE SCREEN BUTTON -->
+            <button class="large-btn" ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i>Ta bort favorit</button>
+        </div>
         </div>
       </div>
     </div>

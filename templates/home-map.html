@@ -34,8 +34,8 @@
 
 <div class="row">
 
-  <div class="col-xs-12 all-stations-list-wrap">
-    <div ng-repeat="station in allStaions | orderBy: 'Name'" class="all-stations-list">
+  <div class="all-stations-list-wrap">
+    <div ng-repeat="station in allStaions | orderBy: 'Name'" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 all-stations-list">
       <h2>{{ station.Name }}</h2>
       <div class="all-stations-content">
 
@@ -46,7 +46,10 @@
 
         <div class="all-stations-btns">
           <div>
-            <button ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+            <button class="small-btn" ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+            <!-- LARGE SCREEN BTN -->
+            <button class="large-btn" ng-click="saveStation(station.StationId)"><i class="ion-heart"></i>Spara station</button>
+
           </div>
         </div>
 

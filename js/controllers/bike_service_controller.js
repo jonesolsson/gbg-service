@@ -16,7 +16,7 @@ angular.module('bikeCtrl', [])
     };
 
     //Get nearby stations
-    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 1500 ).then(function(data) {
+    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 500 ).then(function(data) {
       $scope.stations = data;
     });
 
