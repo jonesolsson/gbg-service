@@ -46,9 +46,9 @@
 
         <div class="all-stations-btns">
           <div>
-            <button class="small-btn" ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
+            <button class="small-btn" saved <ng-click="saveStation(station.StationId)"><i class="ion-heart"></i></button>
             <!-- LARGE SCREEN BTN -->
-            <button class="large-btn" ng-click="saveStation(station.StationId)"><i class="ion-heart"></i>Spara station</button>
+            <button class="large-btn" saved ng-click="saveStation(station.StationId)"><i class="ion-heart"></i>Spara station</button>
 
           </div>
         </div>
@@ -59,4 +59,6 @@
   </div>
 
 </div>
- <div class="scrollup" scroll-top-map><i class="ion-arrow-up-b"></i></div>
+<div class="saved-station-marker hide"><i class="ion-checkmark-round"></i>Sparad!</div>
+
+<div class="scrollup" scroll-top-map><i class="ion-arrow-up-b"></i></div>

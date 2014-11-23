@@ -6,7 +6,7 @@ angular.module('states', [])
 
   .state('index', {
     url: '/',
-    template: '<h1>LOADING</h1>',
+    templateUrl: 'templates/loader.html',
     controller: function($location) {
       $location.path('/home');
     }

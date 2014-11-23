@@ -5,6 +5,11 @@
 </div>
 
 <div class="row fav-stations-wrap">
+
+  <div class="empty-saved">
+    <p class="empty-saved-text hide">Du verkar inte ha några favoriter sparade. Trist :(</p>
+  </div>
+
   <div ng-repeat="favstat in favouriteStations" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 fav-stations">
     <div class="fav-station">
       <div class="fav-station-content">
@@ -15,13 +20,15 @@
         </div>
         <div class="fav-station-btns">
           <div>
-            <button class="small-btn" ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i></button>
+            <button class="small-btn" deleted ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i></button>
 
             <!-- LARGE SCREEN BUTTON -->
-            <button class="large-btn" ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i>Ta bort favorit</button>
+            <button class="large-btn" deleted ng-click="deleteStation(favstat.Id)"><i class="ion-trash-b"></i>Ta bort station</button>
         </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="delete-station-marker hide"><i class="ion-trash-a"></i>Borttagen!</div>

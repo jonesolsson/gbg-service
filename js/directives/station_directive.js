@@ -69,7 +69,7 @@ angular.module('stationsDirective', [])
             mapHeight;
 
             if(attrs.class == 'col-xs-12 nearby-map hide')
-              mapHeight = winHeight - menuHeight - favHeading;
+              mapHeight = winHeight - menuHeight - favHeading - 15;
             else
               mapHeight = winHeight - menuHeight - showListHeigth - 10;
 
@@ -78,5 +78,64 @@ angular.module('stationsDirective', [])
 
       }
     };
+
+})
+
+.directive('saved', function() {
+
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+
+      element.on('click', function() {
+        $('.saved-station-marker').addClass('show');
+
+        setTimeout(function () {
+          $('.saved-station-marker').removeClass('show');
+        }, 3000);
+
+      });
+
+    }
+  };
+
+})
+
+.directive('deleted', function() {
+
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+
+      element.on('click', function() {
+        $('.delete-station-marker').addClass('show');
+
+        setTimeout(function () {
+          $('.delete-station-marker').removeClass('show');
+        }, 3000);
+
+      });
+
+    }
+  };
+
+})
+
+.directive('easterEgg', function() {
+
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+
+      setTimeout(function() {
+
+        if(scope.$parent.stations === undefined || scope.$parent.stations.length === 0) {
+          $(element).removeClass('hide');
+        }
+
+      }, 500);
+
+    }
+  };
 
 });

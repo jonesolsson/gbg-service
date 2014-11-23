@@ -157,7 +157,7 @@ a {
   width: 35px;
   height: 35px;
   border-radius: 17.5px;
-  border: 1px solid rgba(167, 67, 59, 0.9);
+  border: 1px solid #f8453b;
   margin-left: 5px;
   padding-top: 4px;
 }
@@ -165,7 +165,7 @@ a {
 .fav-station-btns .small-btn i,
 .all-stations-btns .small-btn i {
   font-size: 20px;
-  color: rgba(167, 67, 59, 0.9);
+  color: #f8453b;
 }
 .all-stations-btns .small-btn {
   background-color: #f0f0f0;
@@ -188,6 +188,11 @@ a {
 }
 .angular-google-map-container {
   height: 100%;
+}
+.nearby-map {
+  -webkit-animation: myFrame 1s linear;
+  -moz-animation: myFrame 1s linear;
+  animation: myFrame 1s linear;
 }
 .home-map,
 .nearby-map,
@@ -220,10 +225,17 @@ a {
 }
 .hide {
   opacity: 0;
-  transition: opacity 1.5s ease;
 }
 .show {
   opacity: 1;
+}
+@-webkit-keyframes myFrame {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .scrollup {
   width: 50px;
@@ -242,6 +254,27 @@ a {
   position: relative;
   left: 50%;
   margin-left: -11.5px;
+}
+.saved-station-marker,
+.delete-station-marker {
+  -webkit-animation: myFrame 1s linear;
+  -moz-animation: myFrame 1s linear;
+  animation: myFrame 1s linear;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 15px;
+  border-radius: 3px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -56px;
+  margin-top: -22px;
+  font-size: 17px;
+  color: #f0f0f0;
+}
+.saved-station-marker i,
+.delete-station-marker i {
+  font-size: 20px;
+  margin-right: 5px;
 }
 /* LARGE SCREENS */
 @media (min-width: 992px) {
@@ -416,4 +449,134 @@ a {
   .station-btns {
     width: 50%;
   }
+}
+/* SPINNER */
+#spin-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.spinner {
+  top: 40%;
+  left: 50%;
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.container1 > div,
+.container2 > div,
+.container3 > div {
+  width: 6px;
+  height: 6px;
+  background-color: #333;
+  border-radius: 100%;
+  position: absolute;
+  -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+  animation: bouncedelay 1.2s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.spinner .spinner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.container2 {
+  -webkit-transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
+}
+.container3 {
+  -webkit-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+}
+.circle1 {
+  top: 0;
+  left: 0;
+}
+.circle2 {
+  top: 0;
+  right: 0;
+}
+.circle3 {
+  right: 0;
+  bottom: 0;
+}
+.circle4 {
+  left: 0;
+  bottom: 0;
+}
+.container2 .circle1 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+.container3 .circle1 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+.container1 .circle2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.container2 .circle2 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+.container3 .circle2 {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s;
+}
+.container1 .circle3 {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.container2 .circle3 {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+.container3 .circle3 {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+.container1 .circle4 {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+.container2 .circle4 {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+.container3 .circle4 {
+  -webkit-animation-delay: -0.1s;
+  animation-delay: -0.1s;
+}
+@-webkit-keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+/* Easter */
+.easter,
+.empty-saved {
+  text-align: center;
 }

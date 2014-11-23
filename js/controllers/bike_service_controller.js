@@ -21,13 +21,15 @@ angular.module('bikeCtrl', [])
     });
 
     //Get all stations
-    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 10000 ).then(function(data) {
+    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 100000 ).then(function(data) {
       $scope.allStaions = data;
     });
 
     //Get data from API to favouriteStations
     Bike.getFav($scope.user.userId).then(function(data) {
       $scope.favouriteStations = data;
+      if(data.length === 0)
+        $('.empty-saved-text').removeClass('hide');
     });
 
     //Save fav from nearest stations
