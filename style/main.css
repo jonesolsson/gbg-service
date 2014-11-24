@@ -28,6 +28,10 @@ p {
 }
 a {
   font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
+  color: rgba(248, 69, 59, 0.8);
+}
+a:hover {
+  color: #f8453b;
 }
 .row {
   margin-left: 0;
@@ -157,7 +161,7 @@ a {
   width: 35px;
   height: 35px;
   border-radius: 17.5px;
-  border: 1px solid #f8453b;
+  border: 1px solid rgba(248, 69, 59, 0.8);
   margin-left: 5px;
   padding-top: 4px;
 }
@@ -165,7 +169,7 @@ a {
 .fav-station-btns .small-btn i,
 .all-stations-btns .small-btn i {
   font-size: 20px;
-  color: #f8453b;
+  color: rgba(248, 69, 59, 0.8);
 }
 .all-stations-btns .small-btn {
   background-color: #f0f0f0;
@@ -196,7 +200,8 @@ a {
 }
 .home-map,
 .nearby-map,
-.fav-stations-wrap {
+.fav-stations-wrap,
+.info-text-wrap {
   padding-top: 15px;
 }
 .gm-style-iw {
@@ -249,6 +254,9 @@ a {
   color: #fff;
   cursor: pointer;
 }
+.scrollup:hover {
+  background-color: rgba(248, 69, 59, 0.8);
+}
 .scrollup i {
   font-size: 35px;
   position: relative;
@@ -275,6 +283,10 @@ a {
 .delete-station-marker i {
   font-size: 20px;
   margin-right: 5px;
+}
+.info-text p {
+  margin: 0 0 25px;
+  font-size: 14px;
 }
 /* LARGE SCREENS */
 @media (min-width: 992px) {
@@ -337,7 +349,8 @@ a {
     padding-top: 0;
   }
   .near-heading,
-  .fav-heading {
+  .fav-heading,
+  .info-heading {
     text-align: center;
     padding: 15px 0;
   }
@@ -438,6 +451,12 @@ a {
   .station-info,
   .station-btns {
     width: 50%;
+  }
+  .info-text {
+    text-align: center;
+  }
+  .info-text p {
+    font-size: 17px;
   }
 }
 @media (min-width: 1200px) {

@@ -37,6 +37,10 @@ p {
 
 a {
   font-family: 'Noto Sans', 'Helvetica', 'sans-serif';
+  color: rgba(248, 69, 59, .8);
+  &:hover {
+    color: rgba(248, 69, 59, 1)
+  }
 }
 
 .row {
@@ -173,12 +177,12 @@ a {
     width: 35px;
     height: 35px;
     border-radius: 17.5px;
-    border: 1px solid rgba(248, 69, 59, 1);;
+    border: 1px solid rgba(248, 69, 59, .8);;
     margin-left: 5px;
     padding-top: 4px;
     i {
       font-size: 20px;
-      color: rgba(248, 69, 59, 1);
+      color: rgba(248, 69, 59, .8);
     }
   }
 }
@@ -221,7 +225,8 @@ a {
 
 .home-map,
 .nearby-map,
-.fav-stations-wrap {
+.fav-stations-wrap,
+.info-text-wrap {
   padding-top: 15px;
 }
 
@@ -281,6 +286,9 @@ a {
     background-color: rgba(248, 69, 59, .4);
     color: #fff;
     cursor: pointer;
+    &:hover {
+      background-color: rgba(248, 69, 59, .8);
+    }
     i {
       font-size: 35px;
       position: relative;
@@ -311,7 +319,15 @@ a {
 }
 
 
-  /* LARGE SCREENS */
+.info-text {
+  //text-align: left;
+  p {
+    margin: 0 0 25px;
+    font-size: 14px;
+  }
+}
+
+/* LARGE SCREENS */
 
 
 @media (min-width: 992px) {
@@ -384,7 +400,8 @@ a {
   }
 
   .near-heading,
-  .fav-heading {
+  .fav-heading,
+  .info-heading {
     text-align: center;
     padding: 15px 0;
   }
@@ -505,7 +522,17 @@ a {
   .station-btns {
     width: 50%;
   }
+
+  .info-text {
+    text-align: center;
+    p {
+      font-size: 17px;
+    }
+  }
+
+
 }
+
 
 @media (min-width: 1200px) {
 

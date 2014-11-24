@@ -16,7 +16,7 @@ angular.module('bikeCtrl', [])
     };
 
     //Get nearby stations
-    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 500 ).then(function(data) {
+    Bike.getBikes( $scope.coords.currentLat, $scope.coords.currentLong, 1300 ).then(function(data) {
       $scope.stations = data;
     });
 
@@ -115,8 +115,8 @@ angular.module('bikeCtrl', [])
 
             //Start and finish markers
             var icons = {
-              start: new maps.MarkerImage('style/start.png'),
-              end: new maps.MarkerImage('style/end.png')
+              start: new maps.MarkerImage('style/icon1.png'),
+              end: new maps.MarkerImage('style/bike.png')
             };
 
             //Execute the directin operation
@@ -186,7 +186,7 @@ angular.module('bikeCtrl', [])
           name: val.Name,
           avalStands: val.AvailableBikeStands,
           avalBikes: val.AvailableBikes,
-          icon: 'style/bike_downhill.png'
+          icon: 'style/bike.png'
         });
 
       });

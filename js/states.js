@@ -8,12 +8,12 @@ angular.module('states', [])
     url: '/',
     templateUrl: 'templates/loader.html',
     controller: function($location) {
-      $location.path('/home');
+      $location.path('/home/info');
     }
   })
 
   .state('home', {
-    url: "/home",
+    url: '/home',
     templateUrl: 'templates/home.html',
     controller: 'bikeServiceController',
     resolve: {
@@ -23,14 +23,19 @@ angular.module('states', [])
     }
   })
 
+  .state('home.info', {
+    url: '/info',
+    templateUrl: 'templates/home-info.html'
+  })
+
   .state('home.map', {
     url: "/map",
     templateUrl: "templates/home-map.html",
   })
 
   .state('home.near', {
-    url: "/near",
-    templateUrl: "templates/home-nearest.html"
+    url: '/near',
+    templateUrl: 'templates/home-nearest.html'
   })
 
   .state('home.favourites', {
@@ -38,6 +43,6 @@ angular.module('states', [])
     templateUrl: 'templates/home-favourites.html'
   });
 
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise('/');
 
 });
