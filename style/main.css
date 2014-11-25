@@ -185,7 +185,7 @@ a:hover {
 .fav-station .fav-station-content {
   overflow: hidden;
   padding: 10px 10px;
-  border-left: 4px solid rgba(242, 121, 70, 0.8);
+  border-left: 4px solid rgba(41, 93, 171, 0.8);
 }
 .angular-google-map {
   height: 100%;
